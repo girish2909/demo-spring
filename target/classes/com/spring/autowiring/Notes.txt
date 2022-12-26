@@ -1,0 +1,7 @@
+Autowiring by default NO
+How many types autowiring is available in spring ?
+Four types :
+	byName
+	byType
+	constructor
+	autodetect

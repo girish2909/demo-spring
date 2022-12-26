@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<!--  
+		IOC container achieves Dependency Inject( D.I. ) in two ways  :
+		2 types :
+			Using setter Injections
+			Using Constructor injections
+			
+		How many types of data is handled by IOC in D.I.?
+		3 types :
+			Primitive Data types
+			User Defined Types or Reference Types ( Custom objects )
+			Collection Types
+-->
+
+ <!-- bean definitions here -->
+ 	<bean class="com.spring.Student" name="student1">
+ 		<property name="studentId">
+ 			<value>22334</value>
+ 		</property>
+ 		<property name="studentName">
+ 			<value>G K Mishra</value>
+ 		</property>
+ 		<property name="studentAddress">
+ 			<value>Gurugram</value>
+ 		</property>
+ 		
+ 		<property name="subjects">
+ 			<set>
+ 				<value>english</value>
+ 				<value>maths</value>
+ 				<value>biology</value>
+ 				<value>botony</value>
+ 				<null></null>
+ 			</set>
+ 		</property>
+ 		
+ 		<property name="cources">
+ 			<map>
+ 				<entry key="english" value="2months"></entry>
+ 				<entry key="hindi" value="1months"></entry>
+ 				<entry key="bio" value="1months"></entry>
+ 			</map>
+ 		
+ 		</property>
+ 	</bean>
+
+	  <util:map id="courses">
+	        <entry key="0-201-61622-X" value="The Pragmatic Programmer" />
+	        <entry key="978-1-934356-56-2" value="Hello, Android" />
+	    </util:map>
+ 	 <!-- bean definitions here -->
+ 	<bean class="com.spring.Student" name="student2" p:studentId="123" p:studentName="Vineet" p:studentAddress="Lucknow" p:subjects="hindi,english,biology"
+      p:cources="#{courses}"
+ 	/>
+ 	
+ </beans>

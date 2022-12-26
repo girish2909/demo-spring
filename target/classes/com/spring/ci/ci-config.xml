@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+						http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context.xsd
+						http://www.springframework.org/schema/util
+						http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- note : @PostConstruct, @PreDestroy will work only in case below tag will be available in spring-->
+	<context:annotation-config />
+	<!--  OR use below -->
+	<!-- <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" /> -->
+	<bean class="com.spring.ci.Certificate" name="cert" c:name="Kotin with Kit....">
+	</bean>
+	
+
+	<!-- 
+		1 : If multiple constructor is there then you can define type attribute along with value
+		2 : If one constructor has first double 2 args and another has 2 int args then first constructor will be called instead 2nd one so you need to define type of args.
+		3 : NOTE : By default it will give priority to String,String constructor. 
+		4 : type="int" or type="double"
+		5 : along with type you can pass index="0" and index="1" etc for <constructor-arg value="23" index="1" /> 
+	 -->
+	<bean class="com.spring.ci.Person" name="person" init-method="initCustom" destroy-method="destroyCustom">
+		<constructor-arg value="Girish" />
+		<constructor-arg value="12" />
+		<constructor-arg ref="cert" />
+	</bean>
+
+</beans>
